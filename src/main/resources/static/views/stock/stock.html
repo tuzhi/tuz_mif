@@ -1,0 +1,181 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">Company Info</h3>
+	</div>
+	<div class="panel-body">
+		<table class="table table-hover table-striped">
+			<tr>
+				<td>Symbol</td>
+				<td>{{stockInfo.symbol}}</td>
+				<td width="25%"><div class="input-group">
+						<input
+							class="form-control"
+							type="text"
+							ng-model="buyQty"
+							placeholder="Buy Quantity"
+						></input> <span class="input-group-addon">qty</span>
+					</div></td>
+				<td width="25%"><button
+						class="btn btn-success btn-block"
+						ng-click="buyStock()"
+					>Buy</button></td>
+			</tr>
+			<tr>
+				<td>Exchange</td>
+				<td>{{stockInfo.exchange}}</td>
+				<td width="25%"><div class="input-group">
+						<input
+							class="form-control"
+							type="text"
+							ng-model="sellQty"
+							placeholder="Sell Quantity"
+						></input> <span class="input-group-addon">qty</span>
+					</div></td>
+				<td width="25%"><button
+						class="btn btn-danger btn-block"
+						ng-click="sellStock()"
+					>Sell</button></td>
+			</tr>
+			<tr>
+				<td>Name</td>
+				<td>{{stockInfo.name}}</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Sector</td>
+				<td>{{stockInfo.sector}}</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Industry</td>
+				<td>{{stockInfo.industry}}</td>
+				<td></td>
+				<td></td>
+			</tr>
+		</table>
+	</div>
+</div>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">Quotes & Fundamentals</h3>
+	</div>
+	<div class="panel-body">
+		<div class="container-fluid">
+			<div class="row no-gutter">
+				<div class="col-md-6">
+					<table class="table table-hover table-striped">
+						<tr>
+							<td>Previous Close :</td>
+							<td class="text-right">{{stockQuote.previousClose}}</td>
+						</tr>
+						<tr>
+							<td>Open :</td>
+							<td class="text-right">{{stockQuote.open}}</td>
+						</tr>
+						<tr>
+							<td>Low :</td>
+							<td class="text-right">{{stockQuote.low}}</td>
+						</tr>
+						<tr>
+							<td>High :</td>
+							<td class="text-right">{{stockQuote.high}}</td>
+						</tr>
+						<tr>
+							<td>Bid :</td>
+							<td class="text-right">{{stockQuote.bidPrice}} x {{stockQuote.bidSize}}</td>
+						</tr>
+						<tr>
+							<td>Ask :</td>
+							<td class="text-right">{{stockQuote.askPrice}} x {{stockQuote.askSize}}</td>
+						</tr>
+						<tr>
+							<td>Volume :</td>
+							<td class="text-right">{{stockQuote.volume}}</td>
+						</tr>
+					</table>
+				</div>
+				<div class="col-md-6">
+					<table class="table table-hover table-striped">
+						<tr>
+							<td>Low 52wk :</td>
+							<td class="text-right">{{stockQuote.low52week}}</td>
+						</tr>
+						<tr>
+							<td>High 52wk :</td>
+							<td class="text-right">{{stockQuote.high52week}}</td>
+						</tr>
+						<tr>
+							<td>Market Cap :</td>
+							<td class="text-right">{{stockQuote.marketCap}}</td>
+						</tr>
+						<tr>
+							<td>Eps :</td>
+							<td class="text-right">{{stockQuote.eps}}</td>
+						</tr>
+						<tr>
+							<td>PE :</td>
+							<td class="text-right">{{stockQuote.pe}}</td>
+						</tr>
+						<tr>
+							<td>Beta :</td>
+							<td class="text-right">{{stockQuote.beta}}</td>
+						</tr>
+						<tr>
+							<td>Avg Volume (3m) :</td>
+							<td class="text-right">{{stockQuote.avgVolume}}</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">Historical Prices</h3>
+	</div>
+	<div class="panel-body">
+		<div
+			id="container"
+			style="height: 400px; min-width: 310px"
+		></div>
+	</div>
+</div>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">Business Summary</h3>
+	</div>
+	<div class="panel-body">
+		<span>{{stockProfile.summary}}</span>
+	</div>
+</div>
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">Competitors</h3>
+	</div>
+	<div class="panel-body">
+		<table class="table table-hover table-striped">
+			<tr>
+				<th>Symbol</th>
+				<th>Exchange</th>
+				<th>Name</th>
+				<th>Market Cap</th>
+				<th>IPO Year</th>
+				<th>Sector</th>
+				<th>Industry</th>
+			</tr>
+			<tr ng-repeat='result in competitors'>
+				<td><a ng-href="#/stock/{{result.symbol}}">{{result.symbol}}</a></td>
+				<td>{{result.exchange}}</td>
+				<td>{{result.name}}</td>
+				<td>{{result.marketCap|formatMoney}}</td>
+				<td>{{result.ipoYear}}</td>
+				<td>{{result.sector}}</td>
+				<td>{{result.industry}}</td>
+			</tr>
+		</table>
+	</div>
+</div>
